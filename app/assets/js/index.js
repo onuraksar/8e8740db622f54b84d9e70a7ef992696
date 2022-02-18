@@ -1,4 +1,4 @@
-console.log("hello");
+
 
 
 // Choices:
@@ -55,21 +55,11 @@ const checkValidation = (currentTab) => {
     
 }
 
-// const checkIfEmpty  = (input) => {
-//     return input.value !== '';
-// }
-
-// const checkIfNotSelected = (fieldset) => {
-//     // console.log("fieldset", fieldset)
-//     return !fieldset.querySelectorAll("input[type=radio]:checked").length <= 0;
-// }
-
 const checkIfEmpty  = (input) => {
     return input.value == '';
 }
 
 const checkIfNotSelected = (fieldset) => {
-    // console.log("fieldset", fieldset)
     return fieldset.querySelectorAll("input[type=radio]:checked").length == 0;
 }
 
@@ -93,9 +83,13 @@ const clearErrors = () => {
     Array.from($allNonValidElements).forEach(item => item.classList.remove("u-non-valid"));
 }
 
+const submitForm = () => {
+    alert("Ödeme Gerçekleşti");
+}
 
 
-// Events: 
+
+// Button Events: 
 
 for(let i=0; i < $nextButtons.length; i++) {
     $nextButtons[i].addEventListener("click", (e) => {
@@ -104,18 +98,17 @@ for(let i=0; i < $nextButtons.length; i++) {
         const $nextTab = currentTab.nextElementSibling;
         const isValid = checkValidation(currentTab);  
         console.log("isValid", isValid)  
-        // CHECK: son step'de hata vermesin
         if(isValid) {
             clearErrors();
             currentTab.classList.remove("js-active");
             $nextTab.classList.add("js-active");
             document.getElementsByClassName("c-progressbar__item")[currentTabIndex + 1].classList.add("active")
-            // CHECK: inputları bi sonraki adım için kaydedecek fonksiyonu çağır
-            //
+            // CHECK: inputları bi sonraki adım için kaydedecek local storage fonksiyonu çağır
+            // CHECK: scroll to top fonskiyonu ekle
         } else {
+            //CHECK: hatalı div'e focuslayacak fonksiyonu ekle
             console.log("error")
             showErrors();
-            // CHECK: validasyon mesajlarını göster
         }
     })
 }
@@ -131,13 +124,60 @@ for(let i=0; i < $prevButtons.length; i++) {
     })
 }
 
-$submitButton.addEventListener(item => {
-    
-});
+document.getElementById('js-submit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const [currentTab, currentTabIndex] = getCurrentTab(e.target);
+    const isValid = checkValidation(currentTab);  
+    console.log("isValid", isValid)  
+    if(isValid) {
+        clearErrors();
+        currentTab.classList.remove("js-active");
+        submitForm();
+        //
+    } else {
+        console.log("error")
+        showErrors();
+    }
+})
 
-// CHECK: input change olduğunda validasyon-hatasını sil
 
-// CHECK: select'in validsayonunu düzelt
+
+// Credit Card:
+
+const $cdCN = document.getElementById('js-customerName')
+const $cdNo = document.getElementById('js-card-number');
+const $cdMonth = document.getElementById('js-month');
+const $cdYear = document.getElementById('js-year');
+const $cdCVV = document.getElementById('js-cvv');
+
+const $allCreditCardInput = document.querySelectorAll("[data-match]")
+
+for(let i=0; i < $allCreditCardInput.length; i++) {
+    ['change', 'input'].forEach(evt => {
+        $allCreditCardInput[i].addEventListener(evt, (e) => {
+            const matchingKey = e.target.getAttribute("data-match");
+            document.querySelector(`[data-card = ${matchingKey}]`).innerHTML = e.target.value;
+        })
+    })
+
+}
+
+$cdCVV.addEventListener("focus", () => {
+    document.querySelector(".c-credit-card__back").classList.add("active")
+    document.querySelector(".c-credit-card__front").classList.remove("active")
+
+})
+$cdCVV.addEventListener("focusout", () => {
+    document.querySelector(".c-credit-card__back").classList.remove("active")
+    document.querySelector(".c-credit-card__front").classList.add("active")
+
+})
+
+
+
+
+
+
 
 // ONUR AKŞAR
 

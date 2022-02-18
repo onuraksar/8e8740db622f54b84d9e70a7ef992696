@@ -33,13 +33,13 @@
                                 </div>
                                 <span class="c-progressbar__title">Otel ve Tarih Seçimi</span>
                             </li>
-                            <li class="c-progressbar__item active">
+                            <li class="c-progressbar__item ">
                                 <div class="c-progressbar__icon">
                                     <img class="u-icon" src="../assets/img/icons/bed.svg" alt="calendar-icon">
                                 </div>
                                 <span class="c-progressbar__title">Oda Tipi ve Manzara Seçimi</span>
                             </li>
-                            <li class="c-progressbar__item active">
+                            <li class="c-progressbar__item ">
                                 <div class="c-progressbar__icon">
                                     <img class="u-icon" src="../assets/img/icons/credit-card.svg" alt="calendar-icon">
                                 </div>
@@ -48,7 +48,7 @@
                         </ul>
                     </div>
                     <form action="" novalidate>
-                        <div class="c-form__tab " >
+                        <div class="c-form__tab js-active" >
                             <div class="c-form__content">
                                 <div class="c-select">
                                     <select id="js-choose-hotel" required>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="c-form__tab ">
                             <div class="c-hotel-info">
-                                <h2 class="c-hotel-info__title">Bosph Otel (istambuş)</h2>
+                                <h2 class="c-hotel-info__title">Bosphorus Otel (İstanbul)</h2>
                                 <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Giriş Tarihi:</span> 25.12.202</p> 
                                 <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çıkış Tarihi:</span> 31.12.202</p> 
                                 <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Yetişkin:</span> 25.12.202</p> 
@@ -170,53 +170,57 @@
                             </div> 
 
                         </div>
-                        <div class="c-form__tab js-active">
+                        <div class="c-form__tab ">
                             
                             <div class="c-frame">
                                 <div class="c-credit-card">
-                                    <div class="c-credit-card__front">
-                                        <span class="c-credit-card__title">Credit Card</span>
-                                        <span class="c-credit-card__name">Onur Akşar</span>
-                                        <span class="c-credit-card__number">0123 4567 8910 1112</span>
-                                        <p class="c-credit-card__date"><span id="day">01</span>/<span id="year">23</span></p>
+                                    <div class="c-credit-card__front active">
+                                        <span class="c-credit-card__title" >Credit Card</span>
+                                        <span class="c-credit-card__name" data-card="name">Onur Akşar</span>
+                                        <span class="c-credit-card__number" data-card="number">0123 4567 8910 1112</span>
+                                        <p class="c-credit-card__date"><span id="day" data-card="month" >01</span>/<span id="year" data-card="year">23</span></p>
                                     </div>
                                     <div class="c-credit-card__back">
-                                        <span class="c-credit-card__cvc">123</span>
+                                        <span class="c-credit-card__cvc" data-card="cvv">123</span>
                                     </div>
                                 </div>
                                 <div class="c-frame">
                                     <div class="c-form__item">
-                                        <input id="customerName" type="text" class="c-form__input" required>
-                                        <label for="customerName" class="c-form__label"></label>
+                                        <input id="js-customerName" type="text" class="c-form__input" placeholder="Kartın Üzerindeki İsmi Giriniz" data-match="name" required>
+                                        <label for="js-customerName" class="c-form__label">Kartın Üzerindeki İsim</label>
                                     </div>
                                     <div class="c-form__item">
-                                        <input id="customerName" type="number" class="c-form__input" required>
-                                        <label for="customerName" class="c-form__label"></label>
+                                        <input id="js-card-number" type="number" class="c-form__input" placeholder="Kartın Numarasını Giriniz" data-match="number" maxlength="16" required >
+                                        <label for="js-card-number" class="c-form__label">Kart Numarası</label>
                                     </div>
                                     <div class="c-select">
-                                        <select name="month" id="js-month" required>
+                                        <select name="month" id="js-month" required data-match="month">
                                             <option value>Ay</option>
-                                            <option value="Ocak">Ocak</option>
-                                            <option value="Ocak">Şubat</option>
-                                            <option value="Ocak">Mart</option>
-                                            <option value="Ocak">Nisan</option>
-                                            <option value="Ocak">Mayıs</option>
-                                            <option value="Ocak">Haziran</option>
-                                            <option value="Ocak">Temmuz</option>
-                                            <option value="Ocak">Ağustos</option>
-                                            <option value="Ocak">Eylül</option>
-                                            <option value="Ocak">Ekim</option>
-                                            <option value="Ocak">Kasım</option>
-                                            <option value="Ocak">Aralık</option>
+                                            <option value="1">Ocak</option>
+                                            <option value="2">Şubat</option>
+                                            <option value="3">Mart</option>
+                                            <option value="4">Nisan</option>
+                                            <option value="5">Mayıs</option>
+                                            <option value="6">Haziran</option>
+                                            <option value="7">Temmuz</option>
+                                            <option value="8">Ağustos</option>
+                                            <option value="9">Eylül</option>
+                                            <option value="10">Ekim</option>
+                                            <option value="11">Kasım</option>
+                                            <option value="12">Aralık</option>
                                         </select>
                                     </div>
                                     <div class="c-select">
-                                        <select name="year" id="js-year">
+                                        <select name="year" id="js-year" data-match="year">
                                             <option value>Yıl</option>
                                             <option value="22">22</option>
                                             <option value="23">23</option>
                                             <option value="24">24</option>
                                         </select>
+                                    </div>
+                                    <div class="c-form__item">
+                                        <input id="js-cvv" type="number" class="c-form__input" placeholder="CVV Giriniz" data-match="cvv"  maxlength="3" required >
+                                        <label for="js-cvv" class="c-form__label">CVV</label>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +232,7 @@
 
                             <div class="c-form__action">
                                 <button class="c-button c-button--primary js-prev" >Geri</button>
-                                <button class="c-button c-button--primary js-submit" >Ödeme Yap ve Bitir</button>
+                                <button class="c-button c-button--primary " id="js-submit" >Ödeme Yap ve Bitir</button>
                             </div> 
                         </div>
                     </form>

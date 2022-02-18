@@ -356,6 +356,10 @@ template {
   border: 1px solid red !important;
 }
 
+.u-mt-15 {
+  margin-top: 15px;
+}
+
 .o-header__wrapper {
   background-color: #073763;
   color: #ffffff;
@@ -700,6 +704,7 @@ template {
   width: 215px;
   height: 130px;
   border-radius: 10px;
+  position: relative;
 }
 
 .c-credit-card__front {
@@ -717,11 +722,41 @@ template {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+.c-credit-card__front.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .c-credit-card__back {
-  display: none;
   height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.c-credit-card__back.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .c-credit-card__date {
@@ -731,6 +766,17 @@ template {
 .c-frame {
   padding: 20px;
   border: 1px solid #f2f2f2;
+}
+
+.c-frame > .c-form__item {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.c-frame > .c-select {
+  width: 45%;
+  display: inline-block;
 }
 
 .choices__inner {

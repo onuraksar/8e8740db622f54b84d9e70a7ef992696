@@ -1,4 +1,15 @@
 .c-frame {
     padding: 20px;
     border: 1px solid #f2f2f2;
+    &>.c-form__item {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    & >.c-select {
+        width: 45%;
+        display: inline-block;
+    }
+
 }
