@@ -1,0 +1,15 @@
+.o-container {
+    padding: 0 15px;
+    margin: 0 auto;
+    // margin-right: auto;
+    // margin-left: auto;
+
+    @media (min-width: 576px){
+        max-width: 540px;      
+    }
+      
+    @media (min-width: 768px){
+        max-width: 720px;       
+    }
+
+}

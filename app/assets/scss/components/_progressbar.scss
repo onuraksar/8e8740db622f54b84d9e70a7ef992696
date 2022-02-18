@@ -1,0 +1,73 @@
+.c-progressbar {
+    padding: 0.7em 2em;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+
+    &__wrapper {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon {
+        margin-bottom: 0.5em;
+        padding: 0.8em;
+        border: 1px solid #000000;
+        background-color: #ffffff;
+        border-radius: 50%;
+        z-index: 2;
+
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: .3125rem;
+            transition: all 0.4s linear;
+            transform: translateY(-50%);
+            background-color: #d1c7c7;
+        }
+
+        &::after {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        &.active {
+            .c-progressbar__icon {
+                border-width: 2px;
+                border-color: #073763;
+            }
+            .c-progressbar__title {
+                font-weight: 700;
+            }
+        }
+
+        &.active::after {
+            visibility: visible;
+            opacity: 1;
+            background-color: #073763;
+        }
+        
+    }
+
+    &__title {
+        padding: 0 0.8em;
+    }
+}

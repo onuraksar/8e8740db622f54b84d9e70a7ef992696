@@ -1,0 +1,35 @@
+.o-header {
+    &__wrapper {
+        background-color: #073763;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    &__title {
+        h1, h2 {
+            margin: 0;
+        }
+
+        margin-bottom: 20px;
+    }
+
+    &__button {
+        display: inline-block;
+    }
+
+    @media (min-width: 768px) {
+        &__wrapper {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        
+    }
+
+}

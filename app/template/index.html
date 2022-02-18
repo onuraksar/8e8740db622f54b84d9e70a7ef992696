@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otel Rezervasyonu</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/icons/hotel.png">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <link rel="stylesheet" href="../assets/scss/main.css">
+</head>
+<body>
+    <header class="o-header__wrapper">
+        <div class="o-header__title">
+            <h1>Otel
+                <br> Rezervasyon Sistemi
+            </h1>
+        </div>
+        <a class="c-button c-button--secondary"  href="./">Yeni Rezervasyon Yap</a>
+    </header>
+    <main>
+        <section class="o-section">
+            <div class="o-container">
+                <div class="c-form__box">
+                    <div class="c-progressbar">
+                        <ul class="c-progressbar__wrapper">
+                            <li class="c-progressbar__item active">
+                                <div class="c-progressbar__icon">
+                                    <img class="u-icon" src="../assets/img/icons/calendar.svg" alt="calendar-icon">
+                                </div>
+                                <span class="c-progressbar__title">Otel ve Tarih Seçimi</span>
+                            </li>
+                            <li class="c-progressbar__item active">
+                                <div class="c-progressbar__icon">
+                                    <img class="u-icon" src="../assets/img/icons/bed.svg" alt="calendar-icon">
+                                </div>
+                                <span class="c-progressbar__title">Oda Tipi ve Manzara Seçimi</span>
+                            </li>
+                            <li class="c-progressbar__item active">
+                                <div class="c-progressbar__icon">
+                                    <img class="u-icon" src="../assets/img/icons/credit-card.svg" alt="calendar-icon">
+                                </div>
+                                <span class="c-progressbar__title">Önizleme ve Ödeme İşlemleri</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="" novalidate>
+                        <div class="c-form__tab " >
+                            <div class="c-form__content">
+                                <div class="c-select">
+                                    <select id="js-choose-hotel" required>
+                                        <option value>Rezervasyon Yapmak İstediğiniz Oteli Seçiniz</option>
+                                        <option value="Bosphorus Hotel">Bosphorus Hotel</option>
+                                        <option value="Big Istanbul Hotel">Big Istanbul Hotel</option>
+                                        <option value="Dela Hotel">Dela Hotel</option>
+                                        <option value="Aegean Hotel">Aegean Hotel</option>
+                                        <option value="Lara Hotel">Lara Hotel</option>
+                                        <option value="Bodrum Hotel">Bodrum Hotel</option>
+                                        <option value="Visnezade Istanbul Hotel">Visnezade Istanbul Hotel</option>
+                                        <option value="Konak Istanbul Hotel">Konak Istanbul Hotel</option>
+                                        <option value="Dardania Hotel">Dardania Hotel</option>
+                                        <option value="Alanya Hotel">Alanya Hotel</option>
+                                    </select>
+                                </div>
+                                <div class="c-form__wrapper">
+                                    <div class="c-calendar c-form__item">
+                                        <input type="date" id="arrive" class="c-calendar__input c-form__input" name="arrive" value="" required>
+                                        <label for="arrive" class="c-calendar__label c-form__label">Giriş Tarihi</label>
+                                    </div>
+                                    <div class="c-calendar c-form__item">
+                                        <input type="date" id="leave" class="c-calendar__input c-form__input" name="leave" value="" disabled required>
+                                        <label for="leave" class="c-calendar__label c-form__label">Çıkış Tarihi</label>
+                                    </div>
+                                    <div class="c-form__item">
+                                        <input class="c-form__input" type="number" name="adult" id="adult" value="1" min="1" required>
+                                        <label class="c-form__label" for="adult">Yetişkin Sayısı</label>
+                                    </div>
+                                    <div class="c-form__item">
+                                        <input class="c-form__input" type="number" name="child" id="child" value="0" min="0" required>
+                                        <label class="c-form__label" for="child">Çocuk Sayısı</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="c-form__action">
+                                <button class="c-button c-button--primary js-next" >Kaydet ve Devam Et</button>
+                            </div> 
+                        </div>
+                        <div class="c-form__tab ">
+                            <div class="c-hotel-info">
+                                <h2 class="c-hotel-info__title">Bosph Otel (istambuş)</h2>
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Giriş Tarihi:</span> 25.12.202</p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çıkış Tarihi:</span> 31.12.202</p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Yetişkin:</span> 25.12.202</p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çocuk: </span> 25.12.202</p> 
+                            </div>
+
+                            <div class="c-hotel-selection">
+                                <h3 class="c-hotel-selection__title">Oda Tipi Seçimi</h3>
+                                <fieldset class="c-hotel-selection__container" id="room-type" required>
+                                    <input id="standard-room" type="radio" class="c-hotel-selection__input" name="room-type">
+                                    <label for="standard-room" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Standart</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/1-standart.jpg" alt="oda-1-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>5 Gün <br>1 Yetişkin<br></p>
+                                            <p>5.645 TL</p>
+                                        </div>
+                                    </label>
+                                    <input id= "deluxe-room" type="radio" class="c-hotel-selection__input" name="room-type">
+                                    <label for="deluxe-room" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Deluxe</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/1-deluxe.jpg" alt="oda-2-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>5 Gün <br>1 Yetişkin<br></p>
+                                            <p>13.645 TL</p>
+                                        </div>
+                                    </label>
+                                    <input id="suit-room" type="radio" class="c-hotel-selection__input" name="room-type">
+                                    <label for="suit-room" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Suit</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/1-suit.jpg" alt="oda-1-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>5 Gün <br>1 Yetişkin<br></p>
+                                            <p>50.645 TL</p>
+                                        </div>
+                                    </label>
+                                </fieldset>
+
+                            </div>
+                            <div class="c-hotel-selection">
+                                <h3 class="c-hotel-selection__title">Manzara Seçimi</h3>
+                                <fieldset class="c-hotel-selection__container" id="view-type" required>
+                                    <input id="land-view" type="radio" class="c-hotel-selection__input" name="view-type">
+                                    <label for="land-view" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Kara Manzaralı</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/land-view.jpg" alt="oda-4-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>Fiyat Etki Oranı</p>
+                                            <p>+1 %</p>
+                                        </div>
+                                    </label>
+                                    <input id="pool-view" type="radio" class="c-hotel-selection__input" name="view-type">
+                                    <label for="pool-view" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Havuz Manzaralı</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/pool-view.jpg" alt="oda-5-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>5 Gün <br>1 Yetişkin<br></p>
+                                            <p>13.645 TL</p>
+                                        </div>
+                                    </label>
+                                    <input id="ocean-view" type="radio" class="c-hotel-selection__input" name="view-type">
+                                    <label for="ocean-view" class="c-hotel-selection__item">
+                                        <h4 class="c-hotel-selection__type">Deniz Manzaralı</h4>
+                                        <img class="u-responsive-img" src="https://teknasyon-mailling.s3.eu-central-1.amazonaws.com/challenge/frontend/img/sea-view.jpg" alt="oda-6-img">
+                                        <div class="c-hotel-selection__subinfo">
+                                            <p>5 Gün <br>1 Yetişkin<br></p>
+                                            <p>50.645 TL</p>
+                                        </div>
+                                    </label>
+                                </fieldset>
+
+                            </div>
+                            
+                            <div class="c-form__action">
+                                <button class="c-button c-button--primary js-prev" >Geri</button>
+                                <button class="c-button c-button--primary js-next" >Kaydet ve Devam Et</button>
+                            </div> 
+
+                        </div>
+                        <div class="c-form__tab js-active">
+                            
+                            <div class="c-frame">
+                                <div class="c-credit-card">
+                                    <div class="c-credit-card__front">
+                                        <span class="c-credit-card__title">Credit Card</span>
+                                        <span class="c-credit-card__name">Onur Akşar</span>
+                                        <span class="c-credit-card__number">0123 4567 8910 1112</span>
+                                        <p class="c-credit-card__date"><span id="day">01</span>/<span id="year">23</span></p>
+                                    </div>
+                                    <div class="c-credit-card__back">
+                                        <span class="c-credit-card__cvc">123</span>
+                                    </div>
+                                </div>
+                                <div class="c-frame">
+                                    <div class="c-form__item">
+                                        <input id="customerName" type="text" class="c-form__input" required>
+                                        <label for="customerName" class="c-form__label"></label>
+                                    </div>
+                                    <div class="c-form__item">
+                                        <input id="customerName" type="number" class="c-form__input" required>
+                                        <label for="customerName" class="c-form__label"></label>
+                                    </div>
+                                    <div class="c-select">
+                                        <select name="month" id="js-month" required>
+                                            <option value>Ay</option>
+                                            <option value="Ocak">Ocak</option>
+                                            <option value="Ocak">Şubat</option>
+                                            <option value="Ocak">Mart</option>
+                                            <option value="Ocak">Nisan</option>
+                                            <option value="Ocak">Mayıs</option>
+                                            <option value="Ocak">Haziran</option>
+                                            <option value="Ocak">Temmuz</option>
+                                            <option value="Ocak">Ağustos</option>
+                                            <option value="Ocak">Eylül</option>
+                                            <option value="Ocak">Ekim</option>
+                                            <option value="Ocak">Kasım</option>
+                                            <option value="Ocak">Aralık</option>
+                                        </select>
+                                    </div>
+                                    <div class="c-select">
+                                        <select name="year" id="js-year">
+                                            <option value>Yıl</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="c-checkout">
+
+                            </div>
+
+
+                            <div class="c-form__action">
+                                <button class="c-button c-button--primary js-prev" >Geri</button>
+                                <button class="c-button c-button--primary js-submit" >Ödeme Yap ve Bitir</button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="../assets/js/index.js"></script>
+</body>
+</html>

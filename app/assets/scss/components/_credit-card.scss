@@ -1,0 +1,24 @@
+.c-credit-card {
+    padding: 20px;
+    background-color: #f2f2f2;
+    width: 215px;
+    height: 130px;
+    border-radius: 10px;
+
+    &__front {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    &__back {
+        display: none;
+        height: 100%;
+    }
+
+    &__date {
+        margin: 0;
+    }
+}

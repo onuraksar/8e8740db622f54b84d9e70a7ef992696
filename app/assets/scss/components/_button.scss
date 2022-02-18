@@ -1,0 +1,35 @@
+.c-button {
+    min-width: 80px;
+    padding: 0.5em;
+    text-decoration: none;
+    transition: all ease 0.2s;
+    cursor: pointer;
+    font-weight: 700;
+
+    &.js-next, &.js-submit{
+        margin-left: auto;
+    }
+
+    &--primary {
+        background-color: #073763;
+        color: #ffffff;
+        &:hover {
+            background-color: #ffffff;
+            outline: 1px solid #073763;
+            color: #073763;
+        }
+
+
+    }
+    
+    &--secondary {
+        background-color: #ffffff;
+        color: #000000;
+
+        &:hover {
+            outline: 1px solid #ffffff;
+            background-color: #073763;
+            color: #ffffff;
+        }
+    }
+}

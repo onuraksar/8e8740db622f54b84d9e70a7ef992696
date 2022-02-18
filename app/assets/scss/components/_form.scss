@@ -1,0 +1,58 @@
+.c-form {
+    &__wrapper {
+        display: flex;
+    }
+
+    &__item {
+        position: relative;
+        width: calc(100% / 4);
+        &:not(:last-child) {
+            margin-right: 30px;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(-22px);
+    }
+
+    &__input {
+        min-height: 35px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__action {
+        padding: 20px;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__content {
+        padding: 30px 20px;
+        border: 1px solid #f2f2f2;
+        margin-bottom: 20px;
+    }
+
+    &__tab {
+        // display: none;
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+        transition: opacity ease 0.5s;
+        &.js-active {
+            visibility: visible;
+            height: auto;
+            opacity: 1;
+        }
+    }
+
+
+
+}
+

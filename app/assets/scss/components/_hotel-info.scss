@@ -1,0 +1,17 @@
+.c-hotel-info {
+  background-color: #f2f2f2;  
+  padding: 20px;
+  border-radius: 10px;
+  &__title {
+    margin: 10px 0;
+  }
+
+  &__text {
+    margin: 0 15px 0 0;
+    display: inline-block;
+  }
+
+  &__label {
+    font-weight: 600;
+  }
+} 
