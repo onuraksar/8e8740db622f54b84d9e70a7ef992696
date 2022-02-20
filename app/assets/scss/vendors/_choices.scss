@@ -1,4 +1,19 @@
-.choices__inner {
-    min-height: 30px;
-    box-sizing: border-box;
+.choices {
+    &__inner {
+        min-height: 30px;
+        box-sizing: border-box;
+    }
+
+    &__item {
+        &--selectable {
+            padding-right: 0 !important;
+        }
+    }
+
+    &__list {
+        &--dropdown {
+            z-index: 99 !important;
+        }
+    }
 }
+

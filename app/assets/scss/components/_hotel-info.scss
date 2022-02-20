@@ -4,6 +4,7 @@
   border-radius: 10px;
   &__title {
     margin: 10px 0;
+    font-weight: 700;
   }
 
   &__text {
@@ -13,5 +14,9 @@
 
   &__label {
     font-weight: 600;
+    &--large {
+      font-size: 30px;
+      display: block;
+    }
   }
 } 

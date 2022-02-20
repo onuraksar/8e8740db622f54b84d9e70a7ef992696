@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -10,6 +11,16 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 /* Sections
@@ -356,10 +367,6 @@ template {
   border: 1px solid red !important;
 }
 
-.u-mt-15 {
-  margin-top: 15px;
-}
-
 .o-header__wrapper {
   background-color: #073763;
   color: #ffffff;
@@ -462,6 +469,12 @@ template {
   color: #ffffff;
 }
 
+.c-button:disabled {
+  background-color: #808080;
+  color: #ffffff;
+  outline: none;
+}
+
 .c-progressbar {
   padding: 0.7em 2em;
   background-color: #f2f2f2;
@@ -483,11 +496,21 @@ template {
 
 .c-progressbar__icon {
   margin-bottom: 0.5em;
-  padding: 0.8em;
+  width: 40px;
+  height: 40px;
   border: 1px solid #000000;
   background-color: #ffffff;
   border-radius: 50%;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .c-progressbar__item {
@@ -551,23 +574,23 @@ template {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .c-form__item {
   position: relative;
-  width: calc(100% / 4);
-}
-
-.c-form__item:not(:last-child) {
-  margin-right: 30px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 50%;
+          flex: 0 50%;
 }
 
 .c-form__label {
   position: absolute;
   left: 0;
   top: 0;
-  -webkit-transform: translateY(-22px);
-          transform: translateY(-22px);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .c-form__input {
@@ -589,6 +612,7 @@ template {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 10px;
 }
 
 .c-form__content {
@@ -601,11 +625,14 @@ template {
   visibility: hidden;
   height: 0;
   opacity: 0;
+  position: absolute;
+  left: -999em;
   -webkit-transition: opacity ease 0.5s;
   transition: opacity ease 0.5s;
 }
 
 .c-form__tab.js-active {
+  position: static;
   visibility: visible;
   height: auto;
   opacity: 1;
@@ -623,6 +650,7 @@ template {
 
 .c-hotel-info__title {
   margin: 10px 0;
+  font-weight: 700;
 }
 
 .c-hotel-info__text {
@@ -634,6 +662,11 @@ template {
   font-weight: 600;
 }
 
+.c-hotel-info__label--large {
+  font-size: 30px;
+  display: block;
+}
+
 .c-hotel-selection {
   margin: 30px 0;
 }
@@ -642,6 +675,8 @@ template {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 1px solid #eee;
   padding: 20px;
   -webkit-transition: all ease .2s;
@@ -655,12 +690,14 @@ template {
 }
 
 .c-hotel-selection__item {
-  border: 1px solid #f2f2f2;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 100%;
+          flex: 0 100%;
+  border: 1px solid #b7b5b5;
   padding: 30px;
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s;
   cursor: pointer;
-  margin-right: 15px;
   border-radius: 10px;
 }
 
@@ -668,6 +705,10 @@ template {
   border-color: #4db65d;
   -webkit-box-shadow: 3px 1px 14px 0px #4db65d61;
           box-shadow: 3px 1px 14px 0px #4db65d61;
+}
+
+.c-hotel-selection__item:not(.c-hotel-selection__item:last-of-type) {
+  margin-bottom: 20px;
 }
 
 .c-hotel-selection__input {
@@ -698,13 +739,52 @@ template {
           align-items: center;
 }
 
+@media (min-width: 768px) {
+  .c-hotel-selection__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 calc(50% - 10px);
+            flex: 0 calc(50% - 10px);
+  }
+  .c-hotel-selection__item:nth-of-type(2n+1) {
+    margin-right: 20px;
+  }
+  .c-hotel-selection__item:nth-of-type(3n) {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 100%;
+            flex: 0 100%;
+    margin-right: 0;
+  }
+  .c-hotel-selection__item:not(.c-hotel-selection__item:last-of-type) {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-hotel-selection__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 30%;
+            flex: 0 30%;
+    margin-bottom: 0;
+  }
+  .c-hotel-selection__item:not(:last-of-type) {
+    margin-right: 20px;
+  }
+  .c-hotel-selection__item:nth-of-type(3n) {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 30%;
+            flex: 0 30%;
+  }
+  .c-hotel-selection__item:not(.c-hotel-selection__item:last-of-type) {
+    margin-bottom: 0;
+  }
+}
+
 .c-credit-card {
   padding: 20px;
   background-color: #f2f2f2;
-  width: 215px;
-  height: 130px;
   border-radius: 10px;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .c-credit-card__front {
@@ -766,6 +846,8 @@ template {
 .c-frame {
   padding: 20px;
   border: 1px solid #f2f2f2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .c-frame > .c-form__item {
@@ -779,9 +861,189 @@ template {
   display: inline-block;
 }
 
+.c-payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.c-payment > .c-frame, .c-payment > .c-checkout {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 100%;
+          flex: 0 100%;
+  margin-bottom: 20px;
+}
+
+.c-payment .c-credit-card-info {
+  position: relative;
+}
+
+.c-payment .c-credit-card-info::after {
+  content: 'Kredi Kartı Bilgileri';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: white;
+  padding: 10px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .c-payment {
+    max-width: 720px;
+  }
+  .c-payment > .c-frame, .c-payment > .c-checkout {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 calc(50% - 10px);
+            flex: 0 calc(50% - 10px);
+  }
+  .c-payment > .c-frame {
+    margin-right: 20px;
+  }
+}
+
+.c-checkout {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.c-checkout__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.c-checkout__item {
+  padding: 20px 22px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  white-space: nowrap;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 100%;
+          flex: 0 100%;
+  margin: 5px 0;
+}
+
+.c-checkout__item--half {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 48%;
+          flex: 0 48%;
+}
+
+.c-checkout__item--half:nth-child(2n+1) {
+  margin-right: 5px;
+}
+
+.c-checkout__item--half:nth-child(2n) {
+  margin-left: 5px;
+}
+
+.c-checkout__item > .c-hotel-info__label, .c-checkout__item > .c-hotel-info__value {
+  display: block;
+  text-align: center;
+}
+
+.c-checkout__item > .c-hotel-info__text {
+  display: block;
+  margin: 10px 0;
+}
+
+.c-checkout__item > .c-hotel-info__text .c-hotel-info__value {
+  float: right;
+}
+
+.c-checkout__item > .c-hotel-info__text:last-child .c-hotel-info__label {
+  display: block;
+  text-align: center;
+}
+
+.c-checkout__item > .c-hotel-info__text:last-child .c-hotel-info__label:first-child {
+  margin-bottom: 10px;
+}
+
+.c-checkout__item input, .c-checkout__item button {
+  width: 50%;
+  height: 100%;
+}
+
+.c-register .c-form__item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 49%;
+          flex: 0 49%;
+  margin-bottom: 40px;
+}
+
+.c-register .c-form__item:nth-child(2n+1) {
+  margin-right: 5px;
+}
+
+.c-register .c-form__item:nth-last-child(2), .c-register .c-form__item:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .c-register .c-form__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 24%;
+            flex: 0 24%;
+    margin-bottom: 0;
+  }
+  .c-register .c-form__item:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+.c-success {
+  display: none;
+}
+
+.c-success__wrapper {
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  padding: 20px 50px;
+  margin-bottom: 20px;
+}
+
+.c-success__wrapper .c-button {
+  display: block;
+}
+
+.c-success__wrapper .c-button:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.c-success__image {
+  width: 50px;
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .c-success__wrapper .c-button {
+    display: inline-block;
+  }
+  .c-success__wrapper .c-button:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
 .choices__inner {
   min-height: 30px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.choices__item--selectable {
+  padding-right: 0 !important;
+}
+
+.choices__list--dropdown {
+  z-index: 99 !important;
 }
 /*# sourceMappingURL=main.css.map */

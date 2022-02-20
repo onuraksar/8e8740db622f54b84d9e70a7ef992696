@@ -1,21 +1,28 @@
 .c-form {
+
+    &__box {
+        // display: noneİ
+    }
+
     &__wrapper {
         display: flex;
+        flex-wrap: wrap;
     }
 
     &__item {
         position: relative;
-        width: calc(100% / 4);
-        &:not(:last-child) {
-            margin-right: 30px;
-        }
+        // width: calc(100% / 4);
+        flex: 0 50%;
+        // &:not(:last-child) {
+        //     margin-right: 30px;
+        // }
     }
 
     &__label {
         position: absolute;
         left: 0;
         top: 0;
-        transform: translateY(-22px);
+        transform: translateY(-100%);
     }
 
     &__input {
@@ -30,6 +37,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 10px;
 
     }
 
@@ -44,8 +52,11 @@
         visibility: hidden;
         height: 0;
         opacity: 0;
+        position: absolute;
+        left: -999em;
         transition: opacity ease 0.5s;
         &.js-active {
+            position: static;
             visibility: visible;
             height: auto;
             opacity: 1;

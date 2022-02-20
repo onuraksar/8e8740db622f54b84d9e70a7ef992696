@@ -1,0 +1,66 @@
+.c-checkout {
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: center;
+    }
+
+    &__item {
+        padding: 20px 22px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        // flex: 0.5;
+        // margin: 5px;
+        white-space: nowrap;
+        // width: 100%;
+        // flex: 1;
+        flex: 0 100%;
+
+        margin: 5px 0;
+
+        &--half {
+            // flex: 0.5;
+            // width: calc(50% - 5px);
+            flex: 0 48%;
+            &:nth-child(2n+1) {
+                margin-right: 5px;
+            }
+
+            &:nth-child(2n) {
+                margin-left: 5px;
+            }
+        }
+
+        &>.c-hotel-info__label, &>.c-hotel-info__value {
+            display: block;
+            text-align: center;
+        }
+
+        &>.c-hotel-info__text {
+            display: block;
+            margin: 10px 0;
+            .c-hotel-info__value {
+                float: right;
+            }
+
+            &:last-child {
+                .c-hotel-info__label {
+                    display: block;
+                    text-align: center;
+                    &:first-child {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+
+        input, button {
+            width: 50%;
+            height: 100%;
+        }
+    }
+}

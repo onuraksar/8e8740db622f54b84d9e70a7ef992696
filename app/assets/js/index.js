@@ -5,9 +5,15 @@
 const $hotelElement = document.getElementById('js-choose-hotel');
 const $monthElement = document.getElementById('js-month');
 const $yearElement = document.getElementById('js-year');
-const hotelChoices = new Choices($hotelElement);
-const monthChoices = new Choices($monthElement);
-const yearChoices = new Choices($yearElement);
+const hotelChoices = new Choices($hotelElement, {
+    itemSelectText: '',
+});
+const monthChoices = new Choices($monthElement, {
+    itemSelectText: '',
+});
+const yearChoices = new Choices($yearElement, {
+    itemSelectText: '',
+});
 
 
 //Calendar:
@@ -84,12 +90,24 @@ const clearErrors = () => {
 }
 
 const submitForm = () => {
-    alert("Ödeme Gerçekleşti");
+    // alert("Ödeme Gerçekleşti");
+    console.log("ödeme gerçekleşti")
+}
+
+const scroll = (element) => {
+    element.scrollIntoView({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+    });
 }
 
 
 
+
 // Button Events: 
+
+const $couponButton = document.getElementById('js-coupon');
 
 for(let i=0; i < $nextButtons.length; i++) {
     $nextButtons[i].addEventListener("click", (e) => {
@@ -103,12 +121,15 @@ for(let i=0; i < $nextButtons.length; i++) {
             currentTab.classList.remove("js-active");
             $nextTab.classList.add("js-active");
             document.getElementsByClassName("c-progressbar__item")[currentTabIndex + 1].classList.add("active")
+            scroll(document.querySelector(".c-progressbar"));
+            printHotelInfo(currentTabIndex);
             // CHECK: inputları bi sonraki adım için kaydedecek local storage fonksiyonu çağır
             // CHECK: scroll to top fonskiyonu ekle
         } else {
             //CHECK: hatalı div'e focuslayacak fonksiyonu ekle
             console.log("error")
             showErrors();
+            scroll(document.querySelector(".u-non-valid"))
         }
     })
 }
@@ -121,6 +142,7 @@ for(let i=0; i < $prevButtons.length; i++) {
         currentTab.classList.remove("js-active");
         $prevTab.classList.add("js-active");
         document.getElementsByClassName("c-progressbar__item")[currentTabIndex].classList.remove("active")
+        scroll(document.querySelector(".c-progressbar"));
     })
 }
 
@@ -131,8 +153,11 @@ document.getElementById('js-submit').addEventListener('click', (e) => {
     console.log("isValid", isValid)  
     if(isValid) {
         clearErrors();
-        currentTab.classList.remove("js-active");
         submitForm();
+        document.querySelector(".c-form__box").style.display = 'none';
+        document.querySelector(".c-success").style.display = 'block';
+        scroll(document.querySelector('.c-success'));
+
         //
     } else {
         console.log("error")
@@ -140,14 +165,26 @@ document.getElementById('js-submit').addEventListener('click', (e) => {
     }
 })
 
+document.getElementById('js-cancel').addEventListener('click', () => {
+    alert("rezervasyon iptal");
+    // emin misiniz diye sor.
+    //redirect et.
+})
 
+document.getElementById('js-coupon').addEventListener('click', (e) => {
+    e.preventDefault();
+    if(document.getElementById('coupon').value !== '') {
+        alert("kupon kullanıldı!");
+    }
+})
+
+document.getElementById('coupon').addEventListener('input', (e) => {
+    e.target.value !== '' ? $couponButton.disabled = false : $couponButton.disabled = true;   
+})
 
 // Credit Card:
 
-const $cdCN = document.getElementById('js-customerName')
-const $cdNo = document.getElementById('js-card-number');
-const $cdMonth = document.getElementById('js-month');
-const $cdYear = document.getElementById('js-year');
+
 const $cdCVV = document.getElementById('js-cvv');
 
 const $allCreditCardInput = document.querySelectorAll("[data-match]")
@@ -174,9 +211,29 @@ $cdCVV.addEventListener("focusout", () => {
 })
 
 
+// Print Hotel Info
 
+const $hotelTitle = document.getElementById("js-title");
+const $arriveDate = document.getElementById("js-arrive");
+const $leaveDate = document.getElementById("js-leave");
+const $adultNumber = document.getElementById("js-adult");
+const $childNumber = document.getElementById("js-children");
 
+const printHotelInfo = (currentTabIndex) => {
+    console.log("currentTabIndex", currentTabIndex);
+    
 
+    $hotelTitle.innerHTML = document.getElementById("js-choose-hotel").value
+    $arriveDate.innerHTML = document.getElementById("arrive").value;
+    $leaveDate.innerHTML = document.getElementById("leave").value
+    $adultNumber.innerHTML = document.getElementById("adult").value
+    $childNumber.innerHTML = document.getElementById("child").value
+
+}
+
+const printeCheckoutInfo = () => {
+
+}
 
 
 // ONUR AKŞAR

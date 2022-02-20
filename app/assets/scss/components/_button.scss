@@ -32,4 +32,10 @@
             color: #ffffff;
         }
     }
+
+    &:disabled {
+        background-color: #808080;    
+        color: #ffffff;
+        outline: none;
+    }
 }

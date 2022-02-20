@@ -1,0 +1,37 @@
+.c-payment {
+    display: flex;
+    flex-wrap: wrap;
+
+    &>.c-frame, &>.c-checkout {
+        // width: 50%;
+        flex: 0 100%;
+        margin-bottom: 20px;
+    }
+
+    .c-credit-card-info {
+        position: relative;
+        &::after {
+            content: 'Kredi Kartı Bilgileri';
+            position: absolute;
+            top: 0;
+            left: 10px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 10px;
+            font-weight: 700;
+        }
+    }
+
+
+    @media (min-width: 768px){
+        max-width: 720px;  
+        &>.c-frame, &>.c-checkout {
+            // width: 50%;
+            flex: 0 calc(50% - 10px);
+        } 
+        &>.c-frame {
+            margin-right: 20px;
+        }    
+    }
+
+}
