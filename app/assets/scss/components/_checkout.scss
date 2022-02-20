@@ -9,7 +9,7 @@
     }
 
     &__item {
-        padding: 20px 22px;
+        padding: 20px 15px;
         background-color: #ffffff;
         border-radius: 10px;
         // flex: 0.5;
@@ -18,8 +18,8 @@
         // width: 100%;
         // flex: 1;
         flex: 0 100%;
-
         margin: 5px 0;
+        overflow: hidden;
 
         &--half {
             // flex: 0.5;

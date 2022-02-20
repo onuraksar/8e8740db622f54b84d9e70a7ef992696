@@ -38,4 +38,21 @@
         color: #ffffff;
         outline: none;
     }
+
+    &.js-prev {
+        position: relative;
+        padding-left: 15px;
+        &::before {
+            content: '\2190';
+            position: absolute;
+            left: 10px;
+            transition: all ease 0.2s;
+        }
+
+        &:hover {
+            &::before {
+                left: 2px;
+            }
+        }
+    }
 }

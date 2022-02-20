@@ -2,7 +2,7 @@
 
 
 // Choices:
-const $hotelElement = document.getElementById('js-choose-hotel');
+const $hotelElement = document.getElementById('hotel-title');
 const $monthElement = document.getElementById('js-month');
 const $yearElement = document.getElementById('js-year');
 const hotelChoices = new Choices($hotelElement, {
@@ -79,15 +79,17 @@ const getCurrentTab = (element) => {
 }
 
 const showErrors = () => {
-    nonValidInputsArr.forEach( item => item.classList.add("u-non-valid"));
+    nonValidInputsArr.forEach( item => item.tagName.toLowerCase() == 'select' ?  item.parentElement.classList.add("u-non-valid") : item.classList.add("u-non-valid") );
     nonValidFieldSetsArr.forEach( item => item.classList.add("u-non-valid"));
 }
 
 const clearErrors = () => {
     const $allNonValidElements = document.getElementsByClassName("u-non-valid");
-
     Array.from($allNonValidElements).forEach(item => item.classList.remove("u-non-valid"));
 }
+
+// const $allRequiredFieldSets
+
 
 const submitForm = () => {
     // alert("Ödeme Gerçekleşti");
@@ -157,6 +159,7 @@ document.getElementById('js-submit').addEventListener('click', (e) => {
         document.querySelector(".c-form__box").style.display = 'none';
         document.querySelector(".c-success").style.display = 'block';
         scroll(document.querySelector('.c-success'));
+        printHotelInfo(currentTabIndex);
 
         //
     } else {
@@ -166,7 +169,7 @@ document.getElementById('js-submit').addEventListener('click', (e) => {
 })
 
 document.getElementById('js-cancel').addEventListener('click', () => {
-    alert("rezervasyon iptal");
+    openPrompt();
     // emin misiniz diye sor.
     //redirect et.
 })
@@ -207,32 +210,80 @@ $cdCVV.addEventListener("focus", () => {
 $cdCVV.addEventListener("focusout", () => {
     document.querySelector(".c-credit-card__back").classList.remove("active")
     document.querySelector(".c-credit-card__front").classList.add("active")
-
 })
 
 
 // Print Hotel Info
 
-const $hotelTitle = document.getElementById("js-title");
-const $arriveDate = document.getElementById("js-arrive");
-const $leaveDate = document.getElementById("js-leave");
-const $adultNumber = document.getElementById("js-adult");
-const $childNumber = document.getElementById("js-children");
+let hotelInfo = {
+    hotelTitle : "",
+    arriveDate: "",
+    leaveDate : "",
+    adultNumber: "",
+    childNumber: "",
+    roomType: "",
+    view: "",
+    printInfo: function(currentTabIndex) {
+        document.querySelectorAll(".c-hotel-info__title")[currentTabIndex].innerHTML = hotelInfo.hotelTitle;
+        document.querySelectorAll('.arrive-date')[currentTabIndex].innerHTML = hotelInfo.arriveDate;
+        document.querySelectorAll('.leave-date')[currentTabIndex].innerHTML = hotelInfo.leaveDate;
+        document.querySelectorAll('.adult-number')[currentTabIndex].innerHTML = hotelInfo.adultNumber;
+        document.querySelectorAll('.child-number')[currentTabIndex].innerHTML = hotelInfo.childNumber;
+        hotelInfo.roomType !== '' && (document.querySelectorAll('.room-type')[currentTabIndex - 1].innerHTML = hotelInfo.roomType);
+        hotelInfo.view !== '' && (document.querySelectorAll('.view')[currentTabIndex - 1].innerHTML =  hotelInfo.view);
+    }
+};
 
 const printHotelInfo = (currentTabIndex) => {
-    console.log("currentTabIndex", currentTabIndex);
-    
+    switch(currentTabIndex) {
+        case 0:
+          hotelInfo.hotelTitle = document.getElementById("hotel-title").value;
+          hotelInfo.arriveDate = document.getElementById("arrive").value;
+          hotelInfo.leaveDate = document.getElementById("leave").value;
+          hotelInfo.adultNumber = document.getElementById("adult").value;
+          hotelInfo.childNumber = document.getElementById("child").value;
+          hotelInfo.printInfo(currentTabIndex);
+          break;
+        case 1:
+          hotelInfo.roomType = document.getElementById("js-hotel-form").type.value;
+          hotelInfo.view = document.getElementById("js-hotel-form")["view-type"].value;
+          hotelInfo.printInfo(currentTabIndex);
+          break;
+        case 2:
+          hotelInfo.printInfo(currentTabIndex);
+          break;  
+        default:
+    }
 
-    $hotelTitle.innerHTML = document.getElementById("js-choose-hotel").value
-    $arriveDate.innerHTML = document.getElementById("arrive").value;
-    $leaveDate.innerHTML = document.getElementById("leave").value
-    $adultNumber.innerHTML = document.getElementById("adult").value
-    $childNumber.innerHTML = document.getElementById("child").value
 
 }
 
-const printeCheckoutInfo = () => {
+document.getElementById('js-decline').addEventListener('click', () => {
+    closePrompt();
+})
 
+document.getElementById('js-close').addEventListener('click', () => {
+    // alert("hey");
+    closePrompt();
+})
+
+let isDeclined = false;
+
+document.getElementById('js-confirm').addEventListener('click', () => {
+    document.querySelector(".c-prompt__question").style.display = 'none';
+    document.querySelector(".c-prompt__decline").style.display = 'block';
+    isDeclined = true;
+})
+
+const closePrompt = () => {
+    document.querySelector(".c-prompt__question").style.display = 'block';
+    document.querySelector(".c-prompt__decline").style.display = 'none';
+    document.querySelector(".c-prompt").classList.remove("js-open");
+    isDeclined && (window.location.href = './index.html');
+}
+
+const openPrompt = () => {
+    document.querySelector(".c-prompt").classList.add("js-open");
 }
 
 

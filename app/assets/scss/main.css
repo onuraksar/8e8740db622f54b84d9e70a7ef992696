@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -425,7 +429,7 @@ template {
 
 @media (min-width: 768px) {
   .o-container {
-    max-width: 720px;
+    max-width: 750px;
   }
 }
 
@@ -473,6 +477,23 @@ template {
   background-color: #808080;
   color: #ffffff;
   outline: none;
+}
+
+.c-button.js-prev {
+  position: relative;
+  padding-left: 15px;
+}
+
+.c-button.js-prev::before {
+  content: '\2190';
+  position: absolute;
+  left: 10px;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+.c-button.js-prev:hover::before {
+  left: 2px;
 }
 
 .c-progressbar {
@@ -780,11 +801,22 @@ template {
 }
 
 .c-credit-card {
-  padding: 20px;
   background-color: #f2f2f2;
   border-radius: 10px;
   position: relative;
   margin-bottom: 20px;
+  padding-top: 65%;
+  width: 100%;
+  position: relative;
+}
+
+.c-credit-card__wrapper {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .c-credit-card__front {
@@ -826,12 +858,13 @@ template {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  padding: 20px;
 }
 
 .c-credit-card__back.active {
@@ -841,6 +874,23 @@ template {
 
 .c-credit-card__date {
   margin: 0;
+}
+
+.c-credit-card img {
+  width: 30%;
+  position: absolute;
+  bottom: -5%;
+  right: 5%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.c-credit-card-info {
+  white-space: nowrap;
 }
 
 .c-frame {
@@ -857,7 +907,7 @@ template {
 }
 
 .c-frame > .c-select {
-  width: 45%;
+  width: 50%;
   display: inline-block;
 }
 
@@ -921,7 +971,7 @@ template {
 }
 
 .c-checkout__item {
-  padding: 20px 22px;
+  padding: 20px 15px;
   background-color: #ffffff;
   border-radius: 10px;
   white-space: nowrap;
@@ -929,6 +979,7 @@ template {
       -ms-flex: 0 100%;
           flex: 0 100%;
   margin: 5px 0;
+  overflow: hidden;
 }
 
 .c-checkout__item--half {
@@ -974,9 +1025,7 @@ template {
 }
 
 .c-register .c-form__item {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 49%;
-          flex: 0 49%;
+  width: calc(50% -5px);
   margin-bottom: 40px;
 }
 
@@ -1031,6 +1080,79 @@ template {
   .c-success__wrapper .c-button:not(:last-child) {
     margin-bottom: 0;
   }
+}
+
+.c-prompt {
+  opacity: 0;
+  visibility: hidden;
+  max-width: 70%;
+  margin: 0 auto;
+  position: fixed;
+  top: calc(50%);
+  left: 50%;
+  -webkit-transform: scale(0) translate(-50%, -50%);
+          transform: scale(0) translate(-50%, -50%);
+  -webkit-transition: all ease .2s;
+  transition: all ease .2s;
+}
+
+.c-prompt__wrapper {
+  background-color: #f2f2f2;
+  padding: 40px;
+}
+
+.c-prompt__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c-prompt__container .c-button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 calc(50% - 10px);
+          flex: 0 calc(50% - 10px);
+}
+
+.c-prompt__container .c-button:first-child {
+  margin-right: 10px;
+}
+
+.c-prompt__close {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  cursor: pointer;
+}
+
+.c-prompt__title {
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+.c-prompt.js-open {
+  -webkit-transform: scale(1) translate(-50%, -50%);
+          transform: scale(1) translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-prompt.js-open::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+  height: 100vh;
+  top: calc(-50vh + 110px);
+}
+
+.c-prompt__decline {
+  display: none;
 }
 
 .choices__inner {

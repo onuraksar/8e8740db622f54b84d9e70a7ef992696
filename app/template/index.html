@@ -11,6 +11,9 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/scss/main.css">
 </head>
 <body>
@@ -20,7 +23,7 @@
                 <br> Rezervasyon Sistemi
             </h1>
         </div>
-        <a class="c-button c-button--secondary"  href="./">Yeni Rezervasyon Yap</a>
+        <a class="c-button c-button--secondary"  href="./index.html">Yeni Rezervasyon Yap</a>
     </header>
     <main>
         <section class="o-section">
@@ -48,12 +51,12 @@
                             </li>
                         </ul>
                     </div>
-                    <form action="" novalidate>
+                    <form action="" novalidate id="js-hotel-form">
                         <div class="c-form__tab js-active" >
                             <div class="c-register">
                                 <div class="c-form__content">
                                     <div class="c-select">
-                                        <select id="js-choose-hotel" required>
+                                        <select id="hotel-title" required>
                                             <option value>Rezervasyon Yapmak İstediğiniz Oteli Seçiniz</option>
                                             <option value="Bosphorus Hotel">Bosphorus Hotel</option>
                                             <option value="Big Istanbul Hotel">Big Istanbul Hotel</option>
@@ -94,12 +97,11 @@
                         <div class="c-form__tab ">
                             <div class="c-hotel-info">
                                 <h2 class="c-hotel-info__title" id="js-title">Bosphorus Otel (İstanbul)</h2>
-                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Giriş Tarihi:</span>  <span class="c-hotel-info__value" id="js-arrive">25.12.202</span> </p> 
-                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çıkış Tarihi:</span> <span class="c-hotel-info__value" id="js-leave"> 31.12.202 </span> </p> 
-                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Yetişkin:</span> <span class="c-hotel-info__value" id="js-adult">2</span> </p> 
-                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çocuk: </span><span class="c-hotel-info__value" id="js-children">1</span></p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Giriş Tarihi:</span>  <span class="c-hotel-info__value arrive-date" >25.12.202</span> </p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çıkış Tarihi:</span> <span class="c-hotel-info__value leave-date" > 31.12.202 </span> </p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Yetişkin:</span> <span class="c-hotel-info__value adult-number" >2</span> </p> 
+                                <p class="c-hotel-info__text"> <span class="c-hotel-info__label">Çocuk: </span><span class="c-hotel-info__value child-number" >1</span></p> 
                             </div>
-
                             <div class="c-hotel-selection">
                                 <h3 class="c-hotel-selection__title">Oda Tipi Seçimi</h3>
                                 <fieldset class="c-hotel-selection__container" required>
@@ -131,7 +133,6 @@
                                         </div>
                                     </label>
                                 </fieldset>
-
                             </div>
                             <div class="c-hotel-selection">
                                 <h3 class="c-hotel-selection__title">Manzara Seçimi</h3>
@@ -164,27 +165,27 @@
                                         </div>
                                     </label>
                                 </fieldset>
-
                             </div>
-                            
                             <div class="c-form__action">
                                 <button class="c-button c-button--primary js-prev" >Geri</button>
                                 <button class="c-button c-button--primary js-next" >Kaydet ve Devam Et</button>
                             </div> 
-
                         </div>
                         <div class="c-form__tab ">
                             <div class="c-payment">
                                 <div class="c-frame c-frame--half">
                                     <div class="c-credit-card">
-                                        <div class="c-credit-card__front active">
-                                            <span class="c-credit-card__title" >Credit Card</span>
-                                            <span class="c-credit-card__name" data-card="name">Onur Akşar</span>
-                                            <span class="c-credit-card__number" data-card="number">0123 4567 8910 1112</span>
-                                            <p class="c-credit-card__date"><span id="day" data-card="month" >01</span>/<span id="year" data-card="year">23</span></p>
-                                        </div>
-                                        <div class="c-credit-card__back">
-                                            <span class="c-credit-card__cvc" data-card="cvv">123</span>
+                                        <div class="c-credit-card__wrapper">
+                                            <div class="c-credit-card__front active">
+                                                <span class="c-credit-card__title" >Kredi Kartı</span>
+                                                <span class="c-credit-card__name" data-card="name">Onur Akşar</span>
+                                                <span class="c-credit-card__number" data-card="number">0123 4567 8910 1112</span>
+                                                <p class="c-credit-card__date"><span id="day" data-card="month" >01</span>/<span id="year" data-card="year">23</span></p>
+                                                <img src="../assets/img/icons/visa.png" alt="card-logo">
+                                            </div>
+                                            <div class="c-credit-card__back">
+                                                <span class="c-credit-card__cvc" data-card="cvv">123</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="c-frame c-credit-card-info">
@@ -193,7 +194,7 @@
                                             <label for="js-customerName" class="c-form__label">Kartın Üzerindeki İsim</label>
                                         </div>
                                         <div class="c-form__item">
-                                            <input id="js-card-number" type="number" class="c-form__input" placeholder="Kartın Numarasını Giriniz" data-match="number" maxlength="16" required >
+                                            <input id="js-card-number" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" class="c-form__input" placeholder="Kartın Numarasını Giriniz" data-match="number" required >
                                             <label for="js-card-number" class="c-form__label">Kart Numarası</label>
                                         </div>
                                         <div class="c-select">
@@ -222,7 +223,7 @@
                                             </select>
                                         </div>
                                         <div class="c-form__item">
-                                            <input id="js-cvv" type="number" class="c-form__input" placeholder="CVV Giriniz" data-match="cvv"  maxlength="3" required >
+                                            <input id="js-cvv" type="tel" inputmode="numeric" pattern="[0-9\s]{3}" maxlength="3" class="c-form__input" placeholder="CVV Giriniz" data-match="cvv" required >
                                             <label for="js-cvv" class="c-form__label">CVV</label>
                                         </div>
                                     </div>
@@ -231,22 +232,22 @@
                                     <p class="c-hotel-info__title">Bosp</p>
                                     <div class="c-checkout__container">
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Giriş Tarihi:</span>  <span class="c-hotel-info__value" >25.12.202</span>
+                                            <span class="c-hotel-info__label">Giriş Tarihi:</span>  <span class="c-hotel-info__value arrive-date" >25.12.202</span>
                                         </div>
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Çıkış Tarihi:</span>  <span class="c-hotel-info__value" >29.12.202</span>
+                                            <span class="c-hotel-info__label">Çıkış Tarihi:</span>  <span class="c-hotel-info__value leave-date" >29.12.202</span>
                                         </div>
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Yetişkin:</span>  <span class="c-hotel-info__value" >2</span>
+                                            <span class="c-hotel-info__label">Yetişkin:</span>  <span class="c-hotel-info__value adult-number">2 </span>
                                         </div>
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Çocuk:</span>  <span class="c-hotel-info__value" >3</span>
+                                            <span class="c-hotel-info__label">Çocuk:</span>  <span class="c-hotel-info__value child-number" >3</span>
                                         </div>
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Oda Tipi:</span>  <span class="c-hotel-info__value" >lüx</span>
+                                            <span class="c-hotel-info__label">Oda Tipi:</span>  <span class="c-hotel-info__value room-type" >lüx</span>
                                         </div>
                                         <div class="c-checkout__item c-checkout__item--half">
-                                            <span class="c-hotel-info__label">Manzara:</span>  <span class="c-hotel-info__value" >dağ</span>
+                                            <span class="c-hotel-info__label">Manzara:</span>  <span class="c-hotel-info__value view" >dağ</span>
                                         </div>
                                         <div class="c-checkout__item ">
                                             <input id="coupon" type="text" value="" placeholder="Kupon Kodu">
@@ -270,7 +271,6 @@
                                                 <span class="c-hotel-info__label">TOPLAM TUTAR</span>
                                                 <span class="c-hotel-info__label c-hotel-info__label--large">7.676 TL</span>
                                             </p>
-
                                         </div>
                                     </div>
                                 </div>
@@ -281,7 +281,6 @@
                             </div> 
                         </div>
                     </form>
-
                 </div>
                 <div class="c-success">
                     <div class="c-success__wrapper">
@@ -296,22 +295,22 @@
                         <p class="c-hotel-info__title">Bosp</p>
                         <div class="c-checkout__container">
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Giriş Tarihi:</span>  <span class="c-hotel-info__value">25.12.202</span>
+                                <span class="c-hotel-info__label">Giriş Tarihi:</span><span class="c-hotel-info__value arrive-date">25.12.202</span>
                             </div>
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Çıkış Tarihi:</span>  <span class="c-hotel-info__value">29.12.202</span>
+                                <span class="c-hotel-info__label">Çıkış Tarihi:</span><span class="c-hotel-info__value leave-date">29.12.202</span>
                             </div>
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Yetişkin:</span>  <span class="c-hotel-info__value">2</span>
+                                <span class="c-hotel-info__label">Yetişkin:</span><span class="c-hotel-info__value adult-number">2</span>
                             </div>
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Çocuk:</span>  <span class="c-hotel-info__value">3</span>
+                                <span class="c-hotel-info__label">Çocuk:</span><span class="c-hotel-info__value child-number">3</span>
                             </div>
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Oda Tipi:</span>  <span class="c-hotel-info__value">lüx</span>
+                                <span class="c-hotel-info__label">Oda Tipi:</span><span class="c-hotel-info__value room room-type">lüx</span>
                             </div>
                             <div class="c-checkout__item c-checkout__item--half">
-                                <span class="c-hotel-info__label">Manzara:</span>  <span class="c-hotel-info__value">dağ</span>
+                                <span class="c-hotel-info__label">Manzara:</span><span class="c-hotel-info__value view">dağ</span>
                             </div>
                             <div class="c-checkout__item ">
                                 <p class="c-hotel-info__text"> 
@@ -337,6 +336,20 @@
                     </div>
                 </div>
             </div>
+            <div class="c-prompt">
+                <div class="c-prompt__wrapper">
+                    <div class="c-prompt__question">
+                        <p class="c-prompt__title">Rezervasyon kaydınızı iptal etmek istediğinize emin misiniz?</p>
+                        <div class="c-prompt__container">
+                            <button id="js-confirm" class="c-button c-button--primary">Evet</button>
+                            <button id="js-decline" class="c-button c-button--secondary">Hayır</button>
+                        </div>
+                    </div>
+                    <p class="c-prompt__decline">Rezervasyonunuz İptal Edilmiştir.</p>
+                </div>
+                <div class="c-prompt__close" id="js-close">x</div>
+            </div>
+
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>

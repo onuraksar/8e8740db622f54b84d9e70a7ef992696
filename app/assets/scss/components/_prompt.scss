@@ -1,0 +1,61 @@
+.c-prompt {
+    opacity: 0;
+    visibility: hidden;
+    max-width: 70%;
+    margin: 0 auto;
+    position: fixed;
+    top: calc(50%);
+    left: 50%;
+    transform: scale(0) translate(-50%, -50%);
+    transition: all ease .2s;
+    &__wrapper {
+        background-color: #f2f2f2;
+        padding: 40px;
+    }
+    &__container {
+        display: flex;
+        .c-button {
+            &:first-child {
+                margin-right: 10px;
+            }
+            flex: 0 calc(50% - 10px);
+        }
+    }
+    &__close {
+        width: max-content;
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-family: 'Open Sans';
+        font-weight: 700;
+    }
+
+    &.js-open {
+        transform: scale(1) translate(-50%, -50%);
+        visibility: visible;
+        opacity: 1;
+
+        &::before {
+            content: "";
+            background: rgba(0, 0, 0, 0.65);
+            position: absolute;
+            height: 100%;
+            width: 4000px;
+            left: -2000px;
+            z-index: -1;
+            height: 100vh;
+            top: calc(-50vh + 110px);
+            
+        }
+
+    }
+
+    &__decline {
+        display: none;
+    }
+}
+
