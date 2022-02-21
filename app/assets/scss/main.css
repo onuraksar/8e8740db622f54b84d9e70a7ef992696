@@ -555,7 +555,7 @@ template {
 .c-progressbar__item::before, .c-progressbar__item::after {
   content: '';
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 0;
   z-index: 1;
   width: 100%;
@@ -1027,10 +1027,7 @@ template {
 .c-register .c-form__item {
   width: calc(50% -5px);
   margin-bottom: 40px;
-}
-
-.c-register .c-form__item:nth-child(2n+1) {
-  margin-right: 5px;
+  border: 5px solid transparent;
 }
 
 .c-register .c-form__item:nth-last-child(2), .c-register .c-form__item:last-child {
@@ -1039,6 +1036,7 @@ template {
 
 @media (min-width: 768px) {
   .c-register .c-form__item {
+    border: none;
     -webkit-box-flex: 0;
         -ms-flex: 0 24%;
             flex: 0 24%;

@@ -55,9 +55,6 @@ const checkValidation = (currentTab) => {
     nonValidInputsArr = Array.from($allRequiredInputs).filter(checkIfEmpty)
     nonValidFieldSetsArr = Array.from($allRequiredFieldSets).filter(checkIfNotSelected)
     return (nonValidInputsArr.length > 0 || nonValidFieldSetsArr.length > 0 ? false : true )
-
-    // return Array.from($allRequiredInputs).every(checkIfEmpty) && Array.from($allRequiredFieldSets).every(checkIfNotSelected);
-    // true, false için etkisiz eleman
     
 }
 
@@ -88,11 +85,8 @@ const clearErrors = () => {
     Array.from($allNonValidElements).forEach(item => item.classList.remove("u-non-valid"));
 }
 
-// const $allRequiredFieldSets
-
 
 const submitForm = () => {
-    // alert("Ödeme Gerçekleşti");
     console.log("ödeme gerçekleşti")
 }
 
@@ -125,10 +119,7 @@ for(let i=0; i < $nextButtons.length; i++) {
             document.getElementsByClassName("c-progressbar__item")[currentTabIndex + 1].classList.add("active")
             scroll(document.querySelector(".c-progressbar"));
             printHotelInfo(currentTabIndex);
-            // CHECK: inputları bi sonraki adım için kaydedecek local storage fonksiyonu çağır
-            // CHECK: scroll to top fonskiyonu ekle
         } else {
-            //CHECK: hatalı div'e focuslayacak fonksiyonu ekle
             console.log("error")
             showErrors();
             scroll(document.querySelector(".u-non-valid"))
@@ -170,14 +161,12 @@ document.getElementById('js-submit').addEventListener('click', (e) => {
 
 document.getElementById('js-cancel').addEventListener('click', () => {
     openPrompt();
-    // emin misiniz diye sor.
-    //redirect et.
 })
 
 document.getElementById('js-coupon').addEventListener('click', (e) => {
     e.preventDefault();
     if(document.getElementById('coupon').value !== '') {
-        alert("kupon kullanıldı!");
+        alert("Kupon Kullanıldı!");
     }
 })
 
@@ -263,7 +252,6 @@ document.getElementById('js-decline').addEventListener('click', () => {
 })
 
 document.getElementById('js-close').addEventListener('click', () => {
-    // alert("hey");
     closePrompt();
 })
 
